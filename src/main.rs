@@ -29,7 +29,6 @@ fn decode_str(code: &str) -> String {
     let res = Code128Reader::default()
         .decode_row(0, &arr, &Default::default())
         .unwrap();
-    println!("{res}");
     res.to_string()
 }
 
