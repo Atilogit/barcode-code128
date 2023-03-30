@@ -1,4 +1,4 @@
-use std::env::args;
+use std::{env::args, io::BufRead};
 
 use image::GenericImageView;
 use rxing::{
@@ -7,10 +7,18 @@ use rxing::{
 };
 
 fn main() {
-    let arg = args().nth(1).unwrap();
-    let code = encode_str(&arg);
-    println!("{code}");
-    println!("{}", code.len());
+    if args().count() == 2 {
+        let arg = args().nth(1).unwrap();
+        let code = encode_str(&arg);
+        println!("{code}");
+        println!("{}", code.len());
+    } else {
+        for line in std::io::stdin().lock().lines() {
+            let code = encode_str(&line.unwrap());
+            println!("{code}");
+            println!("{}", code.len());
+        }
+    }
 }
 
 fn encode_str(text: &str) -> String {
