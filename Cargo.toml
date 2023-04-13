@@ -3,6 +3,13 @@ name = "barcode-code128"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "barcode-cli"
+path = "src/main.rs"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 image = "0.24"
 barcoders = "1.0"
