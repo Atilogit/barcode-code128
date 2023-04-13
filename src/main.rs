@@ -41,7 +41,7 @@ fn decode_str(code: &str) -> String {
 }
 
 fn read_img(path: &str) -> String {
-    let img = image::open(path).unwrap();
+    let img = image::open(path).expect("Image not found");
     let mut code = String::new();
     for x in (0..img.width()).step_by(2) {
         let pix = img.get_pixel(x, 0);
